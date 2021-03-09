@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         tvLetter = findViewById(R.id.tv_letter);
 
-        viewModel.getLetter().observe(this, character ->
+        viewModel.getLetters().observe(this, character ->
                 tvLetter.setText(character.toString()));
 
-        viewModel.getNumber().observe(this, number ->
+        viewModel.getNumbers().observe(this, number ->
                 tvLetter.setText(number.toString()));
     }
 
@@ -39,22 +39,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel.pickConsonant();
     }
 
-    public void pickNumber(View v) {
-        viewModel.generateNumber();
+    public void pickLargeNumber(View v) {
+        viewModel.pickLargeNumber();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void pickSmallNumber(View v) {
+        viewModel.pickSmallNumber();
+    }
 }

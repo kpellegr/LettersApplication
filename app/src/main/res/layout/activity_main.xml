@@ -21,37 +21,51 @@
         android:id="@+id/btn_consonant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="pickConsonant"
         android:text="Consonant"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/btn_vowel"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="pickConsonant"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_vowel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="pickVowel"
         android:text="Vowel"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
         app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
         app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@id/btn_number"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="pickVowel"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_number"
+        android:id="@+id/btn_largeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number"
+        android:onClick="pickLargeNumber"
+        android:text="Large"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_smallNumber"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="pickNumber"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_vowel"
+        app:layout_constraintVertical_bias="0.772" />
+
+    <Button
+        android:id="@+id/btn_smallNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="pickSmallNumber"
+        android:text="Small"
+        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_largeNumber"
+        app:layout_constraintTop_toBottomOf="@+id/btn_consonant"
+        app:layout_constraintVertical_bias="0.782" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
