@@ -35,24 +35,20 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getNumbers().observe(this, number ->
                 tvLetter.setText(number.toString()));
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_a, lettersFragment)
-                .commit();
+        viewModel.getCurrentRound().observe(this, round -> {
+            if (round == LetterViewModel.NUMBERS_ROUND) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.layout_a, numbersFragment)
+                        .commit();
+            } else {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.layout_a, lettersFragment)
+                        .commit();
+            }
+        });
     }
 
-    public void toLetters(View v) {
+    public void nextRound(View v) {
         viewModel.nextRound();
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_a, lettersFragment)
-                .commit();
     }
-
-    public void toNumbers(View v) {
-        viewModel.clearNumbers();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_a, numbersFragment)
-                .commit();
-    }
-
 }

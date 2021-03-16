@@ -11,10 +11,13 @@ import java.util.Random;
 public class LetterViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Character>> letters;
     private MutableLiveData<ArrayList<Integer>> numbers;
+    private MutableLiveData<Integer> currentRound;
 
     private final Random random = new Random();
     private static final int MAX_SMALL_INT = 9;
     private static final int[] ALLOWED_NUMBERS = {10, 25, 50, 100};
+    public static final int NUMBERS_ROUND = 0;
+    public static final int LETTERS_ROUND = 1;
 
     public MutableLiveData<ArrayList<Character>> getLetters() {
         if (letters == null) {
@@ -30,6 +33,25 @@ public class LetterViewModel extends ViewModel {
             numbers.setValue(new ArrayList<Integer>());
         }
         return numbers;
+    }
+
+    public MutableLiveData<Integer> getCurrentRound() {
+        if (currentRound == null) {
+            currentRound = new MutableLiveData<Integer>(NUMBERS_ROUND);
+        }
+        return currentRound;
+    }
+
+    public void nextRound() {
+        clearLetters();
+        clearNumbers();
+
+//        currentRound.setValue(1 - currentRound.getValue());
+
+        if (currentRound.getValue() == NUMBERS_ROUND)
+            currentRound.setValue(LETTERS_ROUND);
+        else
+            currentRound.setValue(NUMBERS_ROUND);
     }
 
     public void pickSmallNumber() {
