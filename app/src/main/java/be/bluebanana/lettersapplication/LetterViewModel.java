@@ -65,13 +65,26 @@ public class LetterViewModel extends ViewModel {
         letters.setValue(list);
     }
 
+    public void clearLetters() {
+        ArrayList<Character> list = getLetters().getValue();
+        list.clear();
+        letters.setValue(list);
+    }
+
+    public void clearNumbers() {
+        ArrayList<Integer> list = getNumbers().getValue();
+        list.clear();
+        numbers.setValue(list);
+    }
+
+
     private char pickALetter() {
-        int ascii = random.nextInt(26) + 97;; // lowercase 'a'
+        int ascii = random.nextInt(26) + 65;; // lowercase 'a'
         return (char)ascii;
     }
 
     private boolean isVowel (char c) {
-        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+        char[] vowels = {'A', 'E', 'I', 'O', 'U'};
 
         for (char v: vowels) {
             if (v == c) return true;

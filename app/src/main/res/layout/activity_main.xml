@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/layout_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_b"/>
+
+    <FrameLayout
+        android:id="@+id/layout_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layout_a"
+        app:layout_constraintBottom_toTopOf="@id/tv_letter"/>
 
     <TextView
         android:id="@+id/tv_letter"
@@ -18,54 +33,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_consonant"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="pickConsonant"
-        android:text="Consonant"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/btn_vowel"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_vowel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickVowel"
-        android:text="Vowel"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_largeNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickLargeNumber"
-        android:text="Large"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_smallNumber"
+        android:onClick="toLetters"
+        android:text="Letters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_vowel"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
 
     <Button
-        android:id="@+id/btn_smallNumber"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="pickSmallNumber"
-        android:text="Small"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
+        android:onClick="toNumbers"
+        android:text="Numbers"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_largeNumber"
-        app:layout_constraintTop_toBottomOf="@+id/btn_consonant"
-        app:layout_constraintVertical_bias="0.782" />
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,12 +15,17 @@ public class MainActivity extends AppCompatActivity {
     TextView tvLetter;
     LetterViewModel viewModel;
 
+    LettersFragment lettersFragment;
+    NumbersFragment numbersFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         viewModel = new ViewModelProvider(this).get(LetterViewModel.class);
+        lettersFragment = new LettersFragment();
+        numbersFragment = new NumbersFragment();
 
         tvLetter = findViewById(R.id.tv_letter);
 
@@ -29,21 +34,25 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.getNumbers().observe(this, number ->
                 tvLetter.setText(number.toString()));
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_a, lettersFragment)
+                .commit();
     }
 
-    public void pickVowel(View v) {
-        viewModel.pickVowel();
+    public void toLetters(View v) {
+        viewModel.nextRound();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_a, lettersFragment)
+                .commit();
     }
 
-    public void pickConsonant(View v) {
-        viewModel.pickConsonant();
+    public void toNumbers(View v) {
+        viewModel.clearNumbers();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_a, numbersFragment)
+                .commit();
     }
 
-    public void pickLargeNumber(View v) {
-        viewModel.pickLargeNumber();
-    }
-
-    public void pickSmallNumber(View v) {
-        viewModel.pickSmallNumber();
-    }
 }
